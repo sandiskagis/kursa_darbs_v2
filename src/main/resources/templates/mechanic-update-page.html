@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<p>Please update client!</p>
+
+	<form action="#" th:action="@{/mechanic/update?id=__${id}__}" th:object="${mechanic}" th:method="post">
+		<table>
+			<tr>
+				<td>Name:</td>
+				<td> <input type="text" th:field="*{name}" /> </td>
+				<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></td>
+			</tr>
+			<tr>
+				<td>Surname:</td>
+				<td> <input type="text" th:field="*{surname}" /> </td>
+				<td th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" ></td>
+			</tr>
+			<tr>
+				<td>Phone number:</td>
+				<td> <input type="text" th:field="*{phoneNo}" /> </td>
+				<td th:if="${#fields.hasErrors('phoneNo')}" th:errors="*{phoneNo}" ></td>
+			</tr>
+			<tr>
+				<td>Experience:</td>
+				<td><input type="number" step="0.01" th:field="*{experience}" /> 
+				<td th:if="${#fields.hasErrors('experience')}" th:errors="*{experience}" ></td>
+			</tr>
+			<tr>
+				<td>Licence number:</td>
+				<td> <input type="text" th:field="*{licenceNo}" /> </td>
+				<td th:if="${#fields.hasErrors('licenceNo')}" th:errors="*{licenceNo}" ></td>
+			</tr>
+			<tr>
+				<td> <input type="submit" name="Save"/></td>
+			</tr>
+		</table>
+	</form>
+
+
+</body>
+
+
+</html>
