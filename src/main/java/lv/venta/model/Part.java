@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "PartTable")
+//@Table(name = "PartTable")
 @Entity
 @Getter
 @Setter
