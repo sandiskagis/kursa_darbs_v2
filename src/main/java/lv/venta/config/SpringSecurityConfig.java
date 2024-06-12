@@ -63,6 +63,9 @@ public class SpringSecurityConfig {
 				.requestMatchers("/mechanic/expGreaterThan/").hasAnyAuthority("USER", "ADMIN")
 				
 				.requestMatchers("/tire/filter/all").hasAnyAuthority("USER", "ADMIN")
+				.requestMatchers("/tire/filter/price/{threshold}").hasAnyAuthority("USER", "ADMIN")
+				.requestMatchers("/tire/filter/manufacturer/{manufacturer}").hasAnyAuthority("USER", "ADMIN")
+				.requestMatchers("/tire/update").hasAnyAuthority("ADMIN")
 				);
 		
 		http.formLogin().permitAll();

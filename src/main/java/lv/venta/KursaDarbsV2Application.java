@@ -53,7 +53,7 @@ public class KursaDarbsV2Application {
 				mechRepo.save(mech1);
 				mechRepo.save(mech2);
 				
-				Tire tire1 = new Tire(100.0f, "Michelin", TireSize.SIZE_195_65, TireType.ALL_SEASON, 55, TireRating.B, TireRating.B);
+				Tire tire1 = new Tire(100.0f, "Michellin", TireSize.SIZE_195_65, TireType.ALL_SEASON, 55, TireRating.B, TireRating.B);
 				Tire tire2 = new Tire(200.0f, "GoodYear", TireSize.SIZE_265_70, TireType.WINTER, 65, TireRating.A, TireRating.A);
 				tireRepo.save(tire1);
 				tireRepo.save(tire2);
