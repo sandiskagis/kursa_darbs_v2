@@ -40,9 +40,9 @@ public class Part {
 	private float price;
 	
 	@Column(name = "manufacturer")
-	@NotNull
-	@Size(min = 2, max = 40)
-	@Pattern(regexp = "[A-Z]{1}[a-z]+")
+	//@NotNull
+	//@Size(min = 2, max = 40)
+	//@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+")
 	private String manufacturer;
 	
 	@ManyToOne //vairakiem part viena masina

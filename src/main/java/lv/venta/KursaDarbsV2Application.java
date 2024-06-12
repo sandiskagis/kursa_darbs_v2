@@ -17,6 +17,7 @@ import lv.venta.model.TireType;
 import lv.venta.repo.ICarRepo;
 import lv.venta.repo.IClientRepo;
 import lv.venta.repo.IMechanicRepo;
+import lv.venta.repo.ITireRepo;
 
 @SpringBootApplication
 public class KursaDarbsV2Application {
@@ -26,7 +27,7 @@ public class KursaDarbsV2Application {
 	}
 	
 	@Bean
-	public CommandLineRunner testDatabaseLayer(IClientRepo clientRepo, IMechanicRepo mechRepo, ICarRepo carRepo) {
+	public CommandLineRunner testDatabaseLayer(IClientRepo clientRepo, IMechanicRepo mechRepo, ICarRepo carRepo, ITireRepo tireRepo) {
 		return new CommandLineRunner() {
 
 			@Override
@@ -54,6 +55,8 @@ public class KursaDarbsV2Application {
 				
 				Tire tire1 = new Tire(100.0f, "Michelin", TireSize.SIZE_195_65, TireType.ALL_SEASON, 55, TireRating.B, TireRating.B);
 				Tire tire2 = new Tire(200.0f, "GoodYear", TireSize.SIZE_265_70, TireType.WINTER, 65, TireRating.A, TireRating.A);
+				tireRepo.save(tire1);
+				tireRepo.save(tire2);
 			}
 			
 		};

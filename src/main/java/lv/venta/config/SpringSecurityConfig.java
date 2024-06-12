@@ -61,6 +61,8 @@ public class SpringSecurityConfig {
 				.requestMatchers("/mechanic/licenceNo/").hasAuthority("ADMIN")
 				.requestMatchers("/mechanic/expLessThan/").hasAnyAuthority("USER", "ADMIN")
 				.requestMatchers("/mechanic/expGreaterThan/").hasAnyAuthority("USER", "ADMIN")
+				
+				.requestMatchers("/tire/filter/all").hasAnyAuthority("USER", "ADMIN")
 				);
 		
 		http.formLogin().permitAll();
