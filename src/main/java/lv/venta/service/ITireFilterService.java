@@ -19,5 +19,14 @@ public interface ITireFilterService {
 			TireRating drivingInRain, TireRating fuelEfficiency) throws Exception;
 
 	Tire retrieveById(int id) throws Exception;
+
+	void createNewTire(float price, String manufacturer, TireSize tireSize, TireType tireType, int loudnessDb,
+			TireRating drivingInRain, TireRating fuelEfficiency) throws Exception;
+
+	void deleteById(int id) throws Exception;
+
+	ArrayList<Tire> selectAllTiresByTireType(TireType tireType) throws Exception;
+
+	ArrayList<Tire> selectAllTiresByTireSize(TireSize tireSize) throws Exception;
 	
 }

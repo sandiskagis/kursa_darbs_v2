@@ -65,7 +65,11 @@ public class SpringSecurityConfig {
 				.requestMatchers("/tire/filter/all").hasAnyAuthority("USER", "ADMIN")
 				.requestMatchers("/tire/filter/price/{threshold}").hasAnyAuthority("USER", "ADMIN")
 				.requestMatchers("/tire/filter/manufacturer/{manufacturer}").hasAnyAuthority("USER", "ADMIN")
-				.requestMatchers("/tire/update").hasAnyAuthority("ADMIN")
+				.requestMatchers("/tire/update").hasAuthority("ADMIN")
+				.requestMatchers("/tire/create").hasAuthority("ADMIN")
+				.requestMatchers("/tire/delete/{id}").hasAuthority("ADMIN")
+				.requestMatchers("/tire/filter/tiretype/{tiretype}").hasAnyAuthority("USER", "ADMIN")
+				.requestMatchers("/tire/filter/tiresize/{tiresize}").hasAnyAuthority("USER", "ADMIN")
 				);
 		
 		http.formLogin().permitAll();

@@ -40,6 +40,8 @@ public class KursaDarbsV2Application {
 				clientRepo.save(client1);
 				Client client2 = new Client("Pēteris", "Kļaviņš", "24444444");
 				clientRepo.save(client2);
+				Client client3 = new Client("Klients", "Nepiesaistītais", "20202020");
+				clientRepo.save(client3);
 				Car car1 = new Car(CarBrand.Audi, "AA1234", CarType.coupe, "R8", client2, mech2);
 				carRepo.save(car1);
 				Car car2 = new Car(CarBrand.Opel, "AB1234", CarType.sedan, "VECTRA", client1, mech1);
@@ -53,10 +55,14 @@ public class KursaDarbsV2Application {
 				mechRepo.save(mech1);
 				mechRepo.save(mech2);
 				
-				Tire tire1 = new Tire(100.0f, "Michellin", TireSize.SIZE_195_65, TireType.ALL_SEASON, 55, TireRating.B, TireRating.B);
+				Tire tire1 = new Tire(100.0f, "Michellin", TireSize.SIZE_275_55, TireType.ALL_SEASON, 55, TireRating.B, TireRating.B);
 				Tire tire2 = new Tire(200.0f, "GoodYear", TireSize.SIZE_265_70, TireType.WINTER, 65, TireRating.A, TireRating.A);
+				Tire tire3 = new Tire(80.0f, "Sailun", TireSize.SIZE_245_45, TireType.SUMMER, 77, TireRating.B, TireRating.C);
+				Tire tire4 = new Tire(99.0f, "Sava", TireSize.SIZE_275_55, TireType.SUMMER, 68, TireRating.C, TireRating.D);
 				tireRepo.save(tire1);
 				tireRepo.save(tire2);
+				tireRepo.save(tire3);
+				tireRepo.save(tire4);
 			}
 			
 		};

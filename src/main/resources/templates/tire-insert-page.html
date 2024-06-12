@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<p>Please inster new Tire!!</p>
+
+	<form action="#" th:action="@{/tire/create}" th:object="${tire}" th:method="post">
+		<table>
+			<tr>
+				<td>Price:</td>
+				<td> <input type="text" th:field="*{price}" /> </td>
+				<td th:if="${#fields.hasErrors('price')}" th:errors="*{price}" ></td>
+			</tr>
+			<tr>
+				<td>Manufacturer:</td>
+				<td> <input type="text" th:field="*{manufacturer}" /> </td>
+				<td th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}" ></td>
+			</tr>
+			<tr>
+				<td>Tire size:</td>
+				<td> <input type="text" th:field="*{tireSize}" /> </td>
+				<td th:if="${#fields.hasErrors('tireSize')}" th:errors="*{tireSize}" ></td>
+			</tr>
+			<tr>
+				<td>Tire type:</td>
+				<td> <input type="text" th:field="*{tireType}" /> </td>
+				<td th:if="${#fields.hasErrors('tireType')}" th:errors="*{tireType}"></td>
+			</tr>
+			<tr>
+				<td>Loudness dB:</td>
+				<td> <input type="text" th:field="*{loudnessDb}" /> </td>
+				<td th:if="${#fields.hasErrors('loudnessDb')}" th:errors="*{loudnessDb}"></td>
+			</tr>
+			<tr>
+				<td>Driving in rain:</td>
+				<td> <input type="text" th:field="*{drivingInRain}" /> </td>
+				<td th:if="${#fields.hasErrors('drivingInRain')}" th:errors="*{drivingInRain}"></td>
+			</tr>
+			<tr>
+				<td>Fuel efficiency:</td>
+				<td> <input type="text" th:field="*{fuelEfficiency}" /> </td>
+				<td th:if="${#fields.hasErrors('fuelEfficiency')}" th:errors="*{fuelEfficiency}"></td>
+			</tr>
+			<tr>
+				<td> <input type="submit" name="Save"/></td>
+			</tr>
+		</table>
+	</form>
+
+
+</body>
+
+
+</html>
