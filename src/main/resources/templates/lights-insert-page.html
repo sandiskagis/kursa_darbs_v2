@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<p>Please inster new Lights!</p>
+
+	<form action="#" th:action="@{/lights/create}" th:object="${lights}" th:method="post">
+		<table>
+			<tr>
+				<td>Price:</td>
+				<td> <input type="text" th:field="*{price}" /> </td>
+				<td th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></td>
+			</tr>
+			<tr>
+				<td>Manufacturer:</td>
+				<td> <input type="text" th:field="*{manufacturer}" /> </td>
+				<td th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}"></td>
+			</tr>
+			<tr>
+				<td>Light type:</td>
+				<td> <input type="text" th:field="*{lightType}" /> </td>
+				<td th:if="${#fields.hasErrors('lightType')}" th:errors="*{lightType}"></td>
+			</tr>
+			<tr>
+				<td>Light use type:</td>
+				<td> <input type="text" th:field="*{lightUseType}" /> </td>
+				<td th:if="${#fields.hasErrors('lightUseType')}" th:errors="*{lightUseType}"></td>
+			</tr>
+			<tr>
+				<td>Light color Kelvin:</td>
+				<td> <input type="text" th:field="*{lightColorKelvin}" /> </td>
+				<td th:if="${#fields.hasErrors('lightColorKelvin')}" th:errors="*{lightColorKelvin}"></td>
+			</tr>
+			<tr>
+				<td>Power in Watts:</td>
+				<td> <input type="text" th:field="*{powerWatt}" /> </td>
+				<td th:if="${#fields.hasErrors('powerWatt')}" th:errors="*{powerWatt}"></td>
+			</tr>
+			<tr>
+				<td> <input type="submit" name="Save"/></td>
+			</tr>
+		</table>
+	</form>
+
+
+</body>
+
+
+</html>

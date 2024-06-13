@@ -1,0 +1,23 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<p th:text="${msg}"></p>
+	<table>
+		<tr th:each="tempC: ${mydata}">
+			<td th:text="${tempC.getIdPa()}"></td>
+			<td th:text="${tempC.getPrice()}"></td>
+			<td th:text="${tempC.getManufacturer()}"></td>
+			<td th:text="${tempC.getLightType()}"></td>
+			<td th:text="${tempC.getLightUseType()}"></td>
+			<td th:text="${tempC.getLightColorKelvin()}"></td>
+			<td th:text="${tempC.getPowerWatt()}"></td>
+		</tr>
+
+	</table>
+
+
+
+</body>
+
+
+</html>

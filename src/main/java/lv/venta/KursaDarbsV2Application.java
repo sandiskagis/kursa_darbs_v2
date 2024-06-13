@@ -9,6 +9,9 @@ import lv.venta.model.Car;
 import lv.venta.model.CarBrand;
 import lv.venta.model.CarType;
 import lv.venta.model.Client;
+import lv.venta.model.LightType;
+import lv.venta.model.LightUseType;
+import lv.venta.model.Lights;
 import lv.venta.model.Mechanic;
 import lv.venta.model.Tire;
 import lv.venta.model.TireRating;
@@ -16,6 +19,7 @@ import lv.venta.model.TireSize;
 import lv.venta.model.TireType;
 import lv.venta.repo.ICarRepo;
 import lv.venta.repo.IClientRepo;
+import lv.venta.repo.ILightsRepo;
 import lv.venta.repo.IMechanicRepo;
 import lv.venta.repo.ITireRepo;
 
@@ -27,7 +31,7 @@ public class KursaDarbsV2Application {
 	}
 	
 	@Bean
-	public CommandLineRunner testDatabaseLayer(IClientRepo clientRepo, IMechanicRepo mechRepo, ICarRepo carRepo, ITireRepo tireRepo) {
+	public CommandLineRunner testDatabaseLayer(IClientRepo clientRepo, IMechanicRepo mechRepo, ICarRepo carRepo, ITireRepo tireRepo, ILightsRepo lightsRepo) {
 		return new CommandLineRunner() {
 
 			@Override
@@ -63,6 +67,15 @@ public class KursaDarbsV2Application {
 				tireRepo.save(tire2);
 				tireRepo.save(tire3);
 				tireRepo.save(tire4);
+				
+				Lights lights1 = new Lights(150.0f, "Bosch", LightType.LED, LightUseType.Headlights, 6000, 50);
+				Lights lights2 = new Lights(350.0f, "BMW", LightType.Xenon, LightUseType.Headlights, 4000, 80);
+				Lights lights3 = new Lights(50.0f, "Audi", LightType.LightBulb, LightUseType.BrakeLights, 2010, 20);
+				Lights lights4 = new Lights(100.0f, "Opel", LightType.LightBulb, LightUseType.FogLights, 3000, 150);
+				lightsRepo.save(lights1);
+				lightsRepo.save(lights2);
+				lightsRepo.save(lights3);
+				lightsRepo.save(lights4);
 			}
 			
 		};
