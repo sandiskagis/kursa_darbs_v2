@@ -76,6 +76,9 @@ public class SpringSecurityConfig {
 				.requestMatchers("/lights/filter/manufacturer/{manufacturer}").hasAnyAuthority("USER", "ADMIN")
 				.requestMatchers("/lights/update").hasAuthority("ADMIN")
 				.requestMatchers("/lights/create").hasAuthority("ADMIN")
+				.requestMatchers("/lights/delete/{id}").hasAuthority("ADMIN")
+				.requestMatchers("/lights/filter/lighttype/{lighttype}").hasAnyAuthority("USER", "ADMIN")
+				.requestMatchers("/lights/filter/lightusetype/{lightusetype}").hasAnyAuthority("USER", "ADMIN")
 				);
 		
 		http.formLogin().permitAll();

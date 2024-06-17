@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
+import lv.venta.model.LightType;
+import lv.venta.model.LightUseType;
 import lv.venta.model.Lights;
 import lv.venta.model.Tire;
+import lv.venta.model.TireType;
 import lv.venta.service.ILightFilterService;
 
 @Controller
@@ -123,6 +126,50 @@ public class LightsFilterController {
 				return "redirect:/error";
 			}
 		}
+	}
+	
+	@GetMapping("/delete/{id}")//localhost:8080/lights/delete/7
+	public String getLightsDeleteById(@PathVariable("id") int id, Model model) {
+		
+		try {
+			lightService.deleteById(id);
+			model.addAttribute("mydata",lightService.retrieveAll());
+			model.addAttribute("msg", "All lights");
+			return "lights-all-show-page";
+		} catch (Exception e) {
+			model.addAttribute("errormsg", e.getMessage());
+			return "error-page";
+		}
+	}
+	
+	@GetMapping("/filter/lighttype/{lighttype}")//localhost:8080/lights/filter/lighttype/LED
+	public String getLightsFilterByLightType(@PathVariable("lighttype") LightType lightType, Model model) {
+		
+		try {
+			model.addAttribute("mydata", lightService.selectAllLightsByLightType(lightType));
+			model.addAttribute("msg", "Lights filtered by light type: " + lightType);
+			return "lights-all-show-page";
+		}
+		catch (Exception e) {
+			model.addAttribute("errormsg", e.getMessage());
+			return "error-page";
+		}
+		
+	}
+	
+	@GetMapping("/filter/lightusetype/{lightusetype}")//localhost:8080/lights/filter/lightusetype/Headlights
+	public String getLightsFilterByLightUseType(@PathVariable("lightusetype") LightUseType lightUseType, Model model) {
+		
+		try {
+			model.addAttribute("mydata", lightService.selectAllLightsByLightUseType(lightUseType));
+			model.addAttribute("msg", "Lights filtered by light use type: " + lightUseType);
+			return "lights-all-show-page";
+		}
+		catch (Exception e) {
+			model.addAttribute("errormsg", e.getMessage());
+			return "error-page";
+		}
+		
 	}
 	
 	

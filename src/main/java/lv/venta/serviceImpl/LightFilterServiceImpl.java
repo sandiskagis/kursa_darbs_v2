@@ -79,20 +79,24 @@ public class LightFilterServiceImpl implements ILightFilterService{
 
 	@Override
 	public void deleteById(int id) throws Exception {
-		// TODO Auto-generated method stub
-		
+		if(id <= 0)
+			throw new Exception("Id should be positive");
+		Lights deleteLights = retrieveById(id);
+		lightsRepo.delete(deleteLights);
 	}
 
 	@Override
 	public ArrayList<Lights> selectAllLightsByLightType(LightType lightType) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if(lightType == null) throw new Exception("The light type can't be null");
+		
+		return (ArrayList<Lights>) lightsRepo.findByLightType(lightType);
 	}
 
 	@Override
 	public ArrayList<Lights> selectAllLightsByLightUseType(LightUseType lightUseType) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if(lightUseType == null) throw new Exception("The light use type can't be null");
+		
+		return (ArrayList<Lights>) lightsRepo.findByLightUseType(lightUseType);
 	}
 
 }
