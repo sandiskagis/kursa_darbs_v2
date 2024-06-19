@@ -128,7 +128,7 @@ public class TireFilterController {
 		}
 	}
 	
-	@GetMapping("/delete/{id}")//localhost:8080/tire/delete/2
+	@GetMapping("/delete/{id}")//localhost:8080/tire/delete/4
 	public String getTireDeleteById(@PathVariable("id") int id, Model model) {
 		
 		try {
