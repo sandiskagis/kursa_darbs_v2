@@ -1,5 +1,7 @@
 package lv.venta;
 
+import java.time.LocalDateTime;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +15,7 @@ import lv.venta.model.LightType;
 import lv.venta.model.LightUseType;
 import lv.venta.model.Lights;
 import lv.venta.model.Mechanic;
+import lv.venta.model.Procedure;
 import lv.venta.model.Tire;
 import lv.venta.model.TireRating;
 import lv.venta.model.TireSize;
@@ -21,6 +24,7 @@ import lv.venta.repo.ICarRepo;
 import lv.venta.repo.IClientRepo;
 import lv.venta.repo.ILightsRepo;
 import lv.venta.repo.IMechanicRepo;
+import lv.venta.repo.IProcedureRepo;
 import lv.venta.repo.ITireRepo;
 
 @SpringBootApplication
@@ -31,7 +35,7 @@ public class KursaDarbsV2Application {
 	}
 	
 	@Bean
-	public CommandLineRunner testDatabaseLayer(IClientRepo clientRepo, IMechanicRepo mechRepo, ICarRepo carRepo, ITireRepo tireRepo, ILightsRepo lightsRepo) {
+	public CommandLineRunner testDatabaseLayer(IClientRepo clientRepo, IMechanicRepo mechRepo, ICarRepo carRepo, ITireRepo tireRepo, ILightsRepo lightsRepo, IProcedureRepo procedureRepo) {
 		return new CommandLineRunner() {
 
 			@Override
@@ -44,20 +48,18 @@ public class KursaDarbsV2Application {
 				clientRepo.save(client1);
 				Client client2 = new Client("Pēteris", "Kļaviņš", "24444444");
 				clientRepo.save(client2);
-				Client client3 = new Client("Klients", "Nepiesaistītais", "20202020");
-				clientRepo.save(client3);
-				Car car1 = new Car(CarBrand.Audi, "AA1234", CarType.coupe, "R8", client2, mech2);
+				Car car1 = new Car(CarBrand.Audi, "AA1234", CarType.coupe, "R8", client1);
 				carRepo.save(car1);
-				Car car2 = new Car(CarBrand.Opel, "AB1234", CarType.sedan, "VECTRA", client1, mech1);
+				Car car2 = new Car(CarBrand.Opel, "AB1234", CarType.sedan, "VECTRA", client2);
 				carRepo.save(car2);
 				client1.addCar(car2);
 				client2.addCar(car1);
 				clientRepo.save(client1);
 				clientRepo.save(client2);
-				mech1.addCar(car2);
-				mech2.addCar(car1);
-				mechRepo.save(mech1);
-				mechRepo.save(mech2);
+				//mech1.addCar(car2);
+				//mech2.addCar(car1);
+				//mechRepo.save(mech1);
+				//mechRepo.save(mech2);
 				
 				Tire tire1 = new Tire(100.0f, "Michellin", TireSize.SIZE_275_55, TireType.ALL_SEASON, 55, TireRating.B, TireRating.B);
 				Tire tire2 = new Tire(200.0f, "GoodYear", TireSize.SIZE_265_70, TireType.WINTER, 65, TireRating.A, TireRating.A);
@@ -76,6 +78,15 @@ public class KursaDarbsV2Application {
 				lightsRepo.save(lights2);
 				lightsRepo.save(lights3);
 				lightsRepo.save(lights4);
+				
+				Procedure procedure1 = new Procedure(mech1, car1, tire1, LocalDateTime.of(2024, 06, 27, 15, 30, 0));
+				Procedure procedure2 = new Procedure(mech1, car1, lights1, LocalDateTime.of(2024, 06, 27, 15, 30, 0));
+				Procedure procedure3 = new Procedure(mech2, car2, tire2, LocalDateTime.of(2024, 06, 30, 12, 00, 0));
+				Procedure procedure4 = new Procedure(mech2, car2, lights2, LocalDateTime.of(2024, 06, 30, 12, 00, 0));
+				procedureRepo.save(procedure1);
+				procedureRepo.save(procedure2);
+				procedureRepo.save(procedure3);
+				procedureRepo.save(procedure4);
 			}
 			
 		};

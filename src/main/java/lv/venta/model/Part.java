@@ -1,5 +1,7 @@
 package lv.venta.model;
 
+import java.util.Collection;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
@@ -19,7 +22,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-//@Table(name = "PartTable")
+@Table(name = "PartTable")
 @Entity
 @Getter
 @Setter
@@ -48,6 +51,10 @@ public class Part {
 	@ManyToOne //vairakiem part viena masina
 	@JoinColumn(name = "idCar")
 	private Car car;
+	
+	@OneToMany(mappedBy = "part")
+	@ToString.Exclude
+	private Collection<Procedure> procedures; 
 	
 	public Part(float price, String manufacturer) {
 		setPrice(price);

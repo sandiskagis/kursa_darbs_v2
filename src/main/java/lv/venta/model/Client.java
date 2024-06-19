@@ -37,10 +37,7 @@ public class Client extends Person{
 		super(name, surname, phoneNo);
 	}
 	
-	@OneToMany(mappedBy = "client")
-	@ToString.Exclude
-	private Collection<Car> cars = new ArrayList<Car>();
-	
+
 	public void addCar(Car car) {
 		if(!cars.contains(car))
 			cars.add(car);
@@ -50,4 +47,8 @@ public class Client extends Person{
 		if(cars.contains(car))
 			cars.remove(car);
 	}
+	
+	@OneToMany(mappedBy = "client")
+	@ToString.Exclude
+	private Collection<Car> cars = new ArrayList<Car>();
 }

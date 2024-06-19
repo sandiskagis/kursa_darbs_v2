@@ -28,7 +28,7 @@ import lombok.ToString;
 @ToString
 public class Car {
 
-	@Column(name = "idCar")
+	@Column(name = "IdCar")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Setter(value = AccessLevel.NONE)
@@ -61,18 +61,18 @@ public class Car {
 	@JoinColumn(name ="IdC")
 	private Client client; 
 	
-	@ManyToOne
+	
+	@OneToMany(mappedBy = "car")
 	@ToString.Exclude
-	@JoinColumn(name ="IdM")
-	private Mechanic mechanic;
+	private Collection<Procedure> procedures; 
 	
 	
-	public Car(CarBrand brand, String carNumber, CarType type, String model, Client client, Mechanic mechanic) {
+	public Car(CarBrand brand, String carNumber, CarType type, String model, Client client) {
 		setBrand(brand);
 		setCarNumber(carNumber);
 		setType(type);
 		setModel(model);
 		setClient(client);
-		setMechanic(mechanic);
+		//setMechanic(mechanic);
 	}
 }

@@ -55,11 +55,15 @@ public class Mechanic extends Person{
 		setLicenceNo(licenceNo);
 	}
 	
-	@OneToMany(mappedBy = "mechanic")
+	/*@OneToMany(mappedBy = "mechanic")
 	@ToString.Exclude
 	private Collection<Car> cars = new ArrayList<Car>();
+	*/
+	@OneToMany(mappedBy = "mechanic")
+	@ToString.Exclude
+	private Collection<Procedure> procedures = new ArrayList<Procedure>();
 	
-	public void addCar(Car car) {
+	/*public void addCar(Car car) {
 		if(!cars.contains(car))
 			cars.add(car);
 	}
@@ -68,5 +72,6 @@ public class Mechanic extends Person{
 		if(cars.contains(car))
 			cars.remove(car);
 	}
+	*/
 	
 }

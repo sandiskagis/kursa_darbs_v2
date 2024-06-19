@@ -80,6 +80,22 @@ public class SpringSecurityConfig {
 				.requestMatchers("/lights/filter/lighttype/{lighttype}").hasAnyAuthority("USER", "ADMIN")
 				.requestMatchers("/lights/filter/lightusetype/{lightusetype}").hasAnyAuthority("USER", "ADMIN")
 				
+				.requestMatchers("/car/filter/all").hasAnyAuthority("USER", "ADMIN")
+				.requestMatchers("/car/filter/update").hasAnyAuthority("USER","ADMIN")
+				.requestMatchers("/car/filter/one").hasAnyAuthority("USER","ADMIN")
+				.requestMatchers("/car/filter/create").hasAuthority("ADMIN")
+				.requestMatchers("/car/filter/delete/{id}").hasAuthority("ADMIN")
+				.requestMatchers("/car/filter/number/{number}").hasAnyAuthority("USER", "ADMIN")
+				.requestMatchers("/car/filter/brandtype/{brand}/{type}").hasAnyAuthority("USER","ADMIN")
+				
+				.requestMatchers("/procedure/filter/all").hasAnyAuthority("USER", "ADMIN")
+				.requestMatchers("/procedure/filter/update").hasAnyAuthority("USER","ADMIN")
+				.requestMatchers("/procedure/filter/one").hasAnyAuthority("USER","ADMIN")
+				.requestMatchers("/procedure/filter/create").hasAuthority("ADMIN")
+				.requestMatchers("/procedure/filter/delete/{id}").hasAuthority("ADMIN")
+				.requestMatchers("/procedure/filter/mechanic/{id}").hasAnyAuthority("USER", "ADMIN")
+				.requestMatchers("/procedure/filter/car/{id}").hasAnyAuthority("USER", "ADMIN")
+				
 				.requestMatchers("/h2-console/**").hasAuthority("ADMIN")
 				);
 		
